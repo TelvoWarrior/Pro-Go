@@ -276,4 +276,25 @@ func main()  {
 		fmt.Println("p1:", p1.name)
 		fmt.Println("p2:", p2.name)
 	}
+
+	//References to struct values can be created using pointers
+	{
+		type Product struct {
+			name, category string
+			price float64
+		}
+
+		p1 := Product {
+			name: "Kayak",
+			category: "Watersports",
+			price: 275,
+		}
+
+		p2 := &p1
+
+		p1.name = "Original Kayak"
+
+		fmt.Println("p1:", p1.name)
+		fmt.Println("p2:", (*p2).name)
+	}
 }
