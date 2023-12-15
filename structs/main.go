@@ -358,4 +358,27 @@ func main()  {
 
 		fmt.Println("Name:", kayak.name, "Category:", kayak.category, "Price:", kayak.price)
 	}
+
+	//Creating pointers directly from values can help make code more concise
+	{
+		type Product struct {
+			name, category string
+			price float64
+		}
+
+		calcTax := func (product *Product) *Product {
+			if product.price > 100 {
+				product.price += product.price * 0.2
+			}
+			return product
+		}
+
+		kayak := calcTax(&Product{
+			name: "Kayak",
+			category: "Watersports",
+			price: 275,
+		})
+
+		fmt.Println("Name:", kayak.name, "Category:", kayak.category, "Price:", kayak.price)
+	}
 }
