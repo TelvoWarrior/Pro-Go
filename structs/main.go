@@ -495,4 +495,19 @@ func main()  {
 			fmt.Println("Name:", p.name, "Supplier:", p.Supplier.name, "City:", p.Supplier.city)
 		}
 	}
+
+	//The zero value for a struct type is a struct value whose fields are assigned their zero type. 
+	//The zero value for a pointer to a struct is nil
+	{
+		type Product struct {
+			name, category string
+			price float64
+		}
+
+		var prod Product
+		var prodPtr *Product
+
+		fmt.Println("Value:", prod.name, prod.category, prod.price)
+		fmt.Println("Pointer:", prodPtr)
+	}
 }
