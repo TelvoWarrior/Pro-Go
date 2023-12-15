@@ -402,4 +402,32 @@ func main()  {
 			fmt.Println("Name:", p.name, "Category:", p.category, "Price:", p.price)
 		}
 	}
+
+	//Pointers can also be used for struct fields, including pointers to other struct types
+	{
+		type Supplier struct {
+			name, city string
+		}
+
+		type Product struct {
+			name, category string
+			price float64
+			*Supplier
+		}
+
+		newProduct := func(name, category string, price float64, supplier *Supplier) *Product {
+			return &Product{ name, category, price, supplier }
+		}
+
+		acme := &Supplier{ "Acme Co", "New York" }
+
+		products := [2]*Product {
+			newProduct("Kayak", "Watersports", 275, acme),
+			newProduct("Hat", "Skiing", 42.50, acme),
+		}
+
+		for _, p := range products {
+			fmt.Println("Name:", p.name, "Supplier:", p.Supplier.name, p.Supplier.city)
+		}
+	}
 }
