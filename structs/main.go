@@ -531,4 +531,23 @@ func main()  {
 		// panic: runtime error: invalid memory address or nil pointer dereference
 		// [signal 0xc0000005 code=0x0 addr=0x0 pc=0xb50bdb]
 	}
+
+	//Initializing a Struct Pointer Field
+	{
+		type Supplier struct {
+			name, city string
+		}
+
+		type Product struct {
+			name, category string
+			price float64
+			*Supplier
+		}
+
+		prod := Product { Supplier: &Supplier{} }
+		var prodPtr *Product
+
+		fmt.Println("Value:", prod.name, prod.category, prod.price, prod.Supplier.name)
+		fmt.Println("Pointer:", prodPtr)
+	}
 }
