@@ -510,4 +510,25 @@ func main()  {
 		fmt.Println("Value:", prod.name, prod.category, prod.price)
 		fmt.Println("Pointer:", prodPtr)
 	}
+
+	//There is a pitfall, when a struct defines a field with a pointer to another struct type
+	{
+		// type Supplier struct {
+		// 	name, city string
+		// }
+
+		// type Product struct {
+		// 	name, category string
+		// 	price float64
+		// 	*Supplier
+		// }
+
+		// var prod Product
+		// var prodPtr *Product
+
+		// fmt.Println("Value:", prod.name, prod.category, prod.price, prod.Supplier.name)
+		// fmt.Println("Pointer:", prodPtr)
+		// panic: runtime error: invalid memory address or nil pointer dereference
+		// [signal 0xc0000005 code=0x0 addr=0x0 pc=0xb50bdb]
+	}
 }
