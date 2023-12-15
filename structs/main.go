@@ -297,4 +297,44 @@ func main()  {
 		fmt.Println("p1:", p1.name)
 		fmt.Println("p2:", (*p2).name)
 	}
+
+	//Understanding the Struct Pointer Convenience Syntax
+	{
+		type Product struct {
+			name, category string
+			price float64
+		}
+
+		calcTax := func (product *Product) {
+			if (*product).price > 100 {
+				(*product).price += (*product).price * 0.2 
+			}
+		}
+
+		kayak := Product { "Kayak", "Watersports", 275 }
+
+		calcTax(&kayak)
+
+		fmt.Println("Name:", kayak.name, "Category:", kayak.category, "Price:", kayak.price)
+	}
+
+	//Example of follow pointers to struct fields without needing an asterisk character
+	{
+		type Product struct {
+			name, category string
+			price float64
+		}
+
+		calcTax := func (product *Product) {
+			if product.price > 100 {
+				product.price += product.price * 0.2 
+			}
+		}
+
+		kayak := Product { "Kayak", "Watersports", 275 }
+
+		calcTax(&kayak)
+
+		fmt.Println("Name:", kayak.name, "Category:", kayak.category, "Price:", kayak.price)
+	}
 }
