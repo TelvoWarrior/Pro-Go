@@ -337,4 +337,25 @@ func main()  {
 
 		fmt.Println("Name:", kayak.name, "Category:", kayak.category, "Price:", kayak.price)
 	}
+
+	//There is no need to assign a struct value to a variable before creating a pointer, 
+	//and the address operator can be used directly with the literal struct syntax
+	{
+		type Product struct {
+			name, category string
+			price float64
+		}
+
+		calcTax := func (product *Product) {
+			if product.price > 100 {
+				product.price += product.price * 0.2 
+			}
+		}
+
+		kayak := &Product { "Kayak", "Watersports", 275 }
+
+		calcTax(kayak)
+
+		fmt.Println("Name:", kayak.name, "Category:", kayak.category, "Price:", kayak.price)
+	}
 }
