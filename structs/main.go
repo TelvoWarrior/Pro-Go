@@ -381,4 +381,25 @@ func main()  {
 
 		fmt.Println("Name:", kayak.name, "Category:", kayak.category, "Price:", kayak.price)
 	}
+
+	//A constructor function is responsible for creating struct values using values received through parameters
+	{
+		type Product struct {
+			name, category string
+			price float64
+		}
+
+		newProduct := func (name, category string, price float64) *Product {
+			return &Product{ name, category, price }
+		}
+
+		products := [2]*Product {
+			newProduct( "Kayak", "Watersports", 275 ),
+			newProduct( "Hat", "Skiing", 42.50 ),
+		}
+
+		for _, p := range products {
+			fmt.Println("Name:", p.name, "Category:", p.category, "Price:", p.price)
+		}
+	}
 }
