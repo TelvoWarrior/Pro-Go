@@ -22,5 +22,6 @@ func main() {
 
 	for _, b := range boats {
 		fmt.Println("Conventional:", b.Product.Name, "Direct:", b.Name)
+		fmt.Println("Boat:", b.Name, "Price:", b.Price(0.2))
 	}
 }
